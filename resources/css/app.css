@@ -1,0 +1,139 @@
+@import 'tailwindcss';
+
+@layer base {
+    :root {
+        --color-primary: #15803d;
+        --color-primary-dark: #166534;
+        --color-primary-light: #dcfce7;
+        --color-secondary: #0f766e;
+        --color-secondary-dark: #115e59;
+        --color-secondary-light: #ccfbf1;
+        --color-accent: #f59e0b;
+        --color-accent-dark: #d97706;
+        --color-bg-base: #f8faf8;
+        --color-surface: #ffffff;
+        --color-text-main: #17201b;
+        --color-text-muted: #647067;
+        --color-border-subtle: #e5eae6;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #17201b;
+        background-color: #f8faf8;
+    }
+
+    /* Accessibility visible focus */
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+        outline: 2px solid #15803d;
+        outline-offset: 2px;
+    }
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f5f2;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Micro animations & transitions */
+.transition-lift {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.transition-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -10px rgba(21, 128, 61, 0.12), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+}
+
+/* Scroll Reveal System */
+.reveal, [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal.is-revealed, [data-reveal].is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-fade-in {
+    opacity: 0;
+    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity;
+}
+
+.reveal-fade-in.is-revealed {
+    opacity: 1;
+}
+
+.reveal-fade-left {
+    opacity: 0;
+    transform: translateX(-24px);
+    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-fade-left.is-revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-fade-right {
+    opacity: 0;
+    transform: translateX(24px);
+    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-fade-right.is-revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-scale-in {
+    opacity: 0;
+    transform: scale(0.96);
+    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-scale-in.is-revealed {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Stagger Helpers */
+.delay-75 { transition-delay: 75ms; }
+.delay-100 { transition-delay: 100ms; }
+.delay-150 { transition-delay: 150ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+
+/* Reduced Motion Override for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .reveal,
+    [data-reveal],
+    .reveal-fade-in,
+    .reveal-fade-left,
+    .reveal-fade-right,
+    .reveal-scale-in {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
