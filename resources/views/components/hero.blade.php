@@ -68,7 +68,7 @@
             </div>
 
             <!-- Right Column: Emotional Community Imagery -->
-            <div class="lg:col-span-5 relative reveal-fade-right" data-reveal>
+            <div class="lg:col-span-5 relative reveal-fade-right mt-6 lg:mt-0" data-reveal>
                 <div class="relative mx-auto max-w-md lg:max-w-none">
                     
                     <!-- Decorative Backdrop Border Frame -->
@@ -85,20 +85,20 @@
                     </div>
 
                     <!-- Floating Metric Card 1: Lives Reached -->
-                    <div class="absolute -bottom-6 -left-4 sm:-left-6 bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-xl border border-[#E5EAE6] flex items-center gap-3.5">
-                        <div class="w-11 h-11 rounded-lg bg-[#DCFCE7] flex items-center justify-center text-[#15803D]">
-                            <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+                    <div class="absolute bottom-2 left-2 sm:-bottom-6 sm:-left-6 bg-white/95 backdrop-blur-md p-3 sm:p-4 rounded-xl shadow-xl border border-[#E5EAE6] flex items-center gap-2.5 sm:gap-3.5">
+                        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-[#DCFCE7] flex items-center justify-center text-[#15803D] shrink-0">
+                            <i data-lucide="heart-handshake" class="w-5 h-5 sm:w-6 sm:h-6"></i>
                         </div>
                         <div>
-                            <div class="text-xl font-bold text-[#17201B] font-heading leading-tight" data-counter="{{ $hero['stats_pill']['count'] ?? '10,000+' }}">{{ $hero['stats_pill']['count'] ?? '10,000+' }}</div>
-                            <div class="text-xs text-[#647067] font-medium">{{ $hero['stats_pill']['label'] ?? 'Lives Reached' }}</div>
+                            <div class="text-lg sm:text-xl font-bold text-[#17201B] font-heading leading-tight" data-counter="{{ $hero['stats_pill']['count'] ?? '10,000+' }}">{{ $hero['stats_pill']['count'] ?? '10,000+' }}</div>
+                            <div class="text-[11px] sm:text-xs text-[#647067] font-medium">{{ $hero['stats_pill']['label'] ?? 'Lives Reached' }}</div>
                         </div>
                     </div>
 
                     <!-- Floating Metric Card 2: Transparency -->
-                    <div class="absolute -top-4 -right-2 sm:-right-4 bg-white/95 backdrop-blur-md py-2 px-3.5 rounded-lg shadow-lg border border-[#E5EAE6] hidden sm:flex items-center gap-2">
-                        <i data-lucide="award" class="w-4 h-4 text-[#F59E0B]"></i>
-                        <span class="text-xs font-semibold text-[#17201B]">100% Volunteer Driven</span>
+                    <div class="absolute top-2 right-2 sm:-top-4 sm:-right-4 bg-white/95 backdrop-blur-md py-1.5 px-3 sm:py-2 sm:px-3.5 rounded-lg shadow-lg border border-[#E5EAE6] flex items-center gap-1.5 sm:gap-2">
+                        <i data-lucide="award" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F59E0B]"></i>
+                        <span class="text-[11px] sm:text-xs font-semibold text-[#17201B]">100% Volunteer Driven</span>
                     </div>
 
                 </div>

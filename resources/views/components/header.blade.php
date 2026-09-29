@@ -1,26 +1,28 @@
 <header 
     x-data="{ scrolled: false, mobileOpen: false }"
     @scroll.window="scrolled = (window.pageYOffset > 20)"
-    :class="scrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-3 border-b border-[#E5EAE6]' : 'bg-white py-4 border-b border-[#E5EAE6]'"
+    @keydown.escape.window="mobileOpen = false"
+    @click.outside="mobileOpen = false"
+    :class="scrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-3 border-b border-[#E5EAE6]' : 'bg-white py-3.5 sm:py-4 border-b border-[#E5EAE6]'"
     class="sticky top-0 z-40 transition-all duration-300 w-full"
 >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between">
             
             <!-- NGO Logo & Brand -->
-            <a href="{{ route('home') }}" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#15803D] rounded-lg">
+            <a href="{{ route('home') }}" class="flex items-center gap-2.5 sm:gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#15803D] rounded-lg">
                 @if (!empty($ngo['logo_url']))
-                    <img src="{{ $ngo['logo_url'] }}" alt="{{ $ngo['name'] ?? 'NANBAN FOUNDATION' }}" class="h-10 sm:h-11 w-auto max-w-[180px] object-contain rounded-lg">
+                    <img src="{{ $ngo['logo_url'] }}" alt="{{ $ngo['name'] ?? 'NANBAN FOUNDATION' }}" class="h-9 sm:h-11 w-auto max-w-[150px] sm:max-w-[180px] object-contain rounded-lg">
                 @else
-                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-[#15803D] to-[#0F766E] flex items-center justify-center text-white shadow-md shadow-green-900/10 group-hover:scale-105 transition-transform">
+                    <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-[#15803D] to-[#0F766E] flex items-center justify-center text-white shadow-md shadow-green-900/10 group-hover:scale-105 transition-transform shrink-0">
                         <i data-lucide="hand-heart" class="w-5 h-5 sm:w-6 sm:h-6"></i>
                     </div>
                 @endif
-                <div class="flex flex-col">
-                    <span class="text-base sm:text-lg font-bold tracking-tight text-[#17201B] font-heading leading-tight flex items-center gap-1.5">
+                <div class="flex flex-col min-w-0">
+                    <span class="text-sm sm:text-base lg:text-lg font-bold tracking-tight text-[#17201B] font-heading leading-tight truncate">
                         {{ $ngo['name'] ?? 'NANBAN FOUNDATION' }}
                     </span>
-                    <span class="text-[10px] sm:text-[11px] font-semibold text-[#15803D] uppercase tracking-wider">
+                    <span class="text-[9px] sm:text-[11px] font-semibold text-[#15803D] uppercase tracking-wider truncate">
                         {{ $ngo['tagline'] ?? 'Tamil Nadu NGO' }}
                     </span>
                 </div>
@@ -74,19 +76,20 @@
                 <button 
                     type="button" 
                     @click="$store.ngoApp.openDonate(500)"
-                    class="px-3 py-1.5 text-xs font-bold text-white bg-[#15803D] rounded-lg shadow-2xs"
+                    class="min-h-[38px] px-3.5 py-1.5 text-xs font-bold text-white bg-[#15803D] active:bg-[#166534] rounded-xl shadow-2xs inline-flex items-center gap-1 cursor-pointer"
                 >
-                    Donate
+                    <i data-lucide="heart" class="w-3.5 h-3.5 fill-white"></i>
+                    <span>Donate</span>
                 </button>
                 <button 
                     type="button"
                     @click="mobileOpen = !mobileOpen; $nextTick(() => window.refreshIcons())"
-                    class="p-2 rounded-xl text-[#17201B] hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-[#15803D]"
-                    aria-label="Toggle Menu"
+                    class="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-[#17201B] hover:bg-slate-100 active:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-[#15803D]"
+                    aria-label="Toggle navigation menu"
                     :aria-expanded="mobileOpen"
                 >
                     <i x-show="!mobileOpen" data-lucide="menu" class="w-6 h-6"></i>
-                    <i x-show="mobileOpen" data-lucide="x" class="w-6 h-6"></i>
+                    <i x-show="mobileOpen" data-lucide="x" class="w-6 h-6" style="display: none;"></i>
                 </button>
             </div>
         </div>
@@ -104,25 +107,25 @@
             style="display: none;"
         >
             <div class="flex flex-col gap-1 py-1">
-                <a @click="mobileOpen = false" href="{{ route('home') }}" class="px-3.5 py-2 rounded-xl text-sm font-medium transition-colors {{ request()->routeIs('home') ? 'bg-green-50 text-[#15803D] font-bold' : 'text-[#17201B] hover:bg-slate-50' }}">
+                <a @click="mobileOpen = false" href="{{ route('home') }}" class="px-3.5 py-2.5 min-h-[44px] flex items-center rounded-xl text-sm font-medium transition-colors {{ request()->routeIs('home') ? 'bg-green-50 text-[#15803D] font-bold' : 'text-[#17201B] hover:bg-slate-50' }}">
                     Home
                 </a>
-                <a @click="mobileOpen = false" href="{{ route('about') }}" class="px-3.5 py-2 rounded-xl text-sm font-medium transition-colors {{ request()->routeIs('about') ? 'bg-green-50 text-[#15803D] font-bold' : 'text-[#17201B] hover:bg-slate-50' }}">
+                <a @click="mobileOpen = false" href="{{ route('about') }}" class="px-3.5 py-2.5 min-h-[44px] flex items-center rounded-xl text-sm font-medium transition-colors {{ request()->routeIs('about') ? 'bg-green-50 text-[#15803D] font-bold' : 'text-[#17201B] hover:bg-slate-50' }}">
                     About
                 </a>
-                <a @click="mobileOpen = false" href="{{ route('programs') }}" class="px-3.5 py-2 rounded-xl text-sm font-medium transition-colors {{ request()->routeIs('programs*') ? 'bg-green-50 text-[#15803D] font-bold' : 'text-[#17201B] hover:bg-slate-50' }}">
+                <a @click="mobileOpen = false" href="{{ route('programs') }}" class="px-3.5 py-2.5 min-h-[44px] flex items-center rounded-xl text-sm font-medium transition-colors {{ request()->routeIs('programs*') ? 'bg-green-50 text-[#15803D] font-bold' : 'text-[#17201B] hover:bg-slate-50' }}">
                     Programs
                 </a>
-                <a @click="mobileOpen = false" href="{{ route('impact') }}" class="px-3.5 py-2 rounded-xl text-sm font-medium transition-colors {{ request()->routeIs('impact') ? 'bg-green-50 text-[#15803D] font-bold' : 'text-[#17201B] hover:bg-slate-50' }}">
+                <a @click="mobileOpen = false" href="{{ route('impact') }}" class="px-3.5 py-2.5 min-h-[44px] flex items-center rounded-xl text-sm font-medium transition-colors {{ request()->routeIs('impact') ? 'bg-green-50 text-[#15803D] font-bold' : 'text-[#17201B] hover:bg-slate-50' }}">
                     Impact
                 </a>
-                <a @click="mobileOpen = false" href="{{ route('stories') }}" class="px-3.5 py-2 rounded-xl text-sm font-medium transition-colors {{ request()->routeIs('stories*') ? 'bg-green-50 text-[#15803D] font-bold' : 'text-[#17201B] hover:bg-slate-50' }}">
+                <a @click="mobileOpen = false" href="{{ route('stories') }}" class="px-3.5 py-2.5 min-h-[44px] flex items-center rounded-xl text-sm font-medium transition-colors {{ request()->routeIs('stories*') ? 'bg-green-50 text-[#15803D] font-bold' : 'text-[#17201B] hover:bg-slate-50' }}">
                     Stories
                 </a>
-                <a @click="mobileOpen = false" href="{{ route('events') }}" class="px-3.5 py-2 rounded-xl text-sm font-medium transition-colors {{ request()->routeIs('events*') ? 'bg-green-50 text-[#15803D] font-bold' : 'text-[#17201B] hover:bg-slate-50' }}">
+                <a @click="mobileOpen = false" href="{{ route('events') }}" class="px-3.5 py-2.5 min-h-[44px] flex items-center rounded-xl text-sm font-medium transition-colors {{ request()->routeIs('events*') ? 'bg-green-50 text-[#15803D] font-bold' : 'text-[#17201B] hover:bg-slate-50' }}">
                     Events
                 </a>
-                <a @click="mobileOpen = false" href="{{ route('contact') }}" class="px-3.5 py-2 rounded-xl text-sm font-medium transition-colors {{ request()->routeIs('contact') ? 'bg-green-50 text-[#15803D] font-bold' : 'text-[#17201B] hover:bg-slate-50' }}">
+                <a @click="mobileOpen = false" href="{{ route('contact') }}" class="px-3.5 py-2.5 min-h-[44px] flex items-center rounded-xl text-sm font-medium transition-colors {{ request()->routeIs('contact') ? 'bg-green-50 text-[#15803D] font-bold' : 'text-[#17201B] hover:bg-slate-50' }}">
                     Contact
                 </a>
             </div>
@@ -131,14 +134,14 @@
                 <a 
                     href="{{ route('volunteer') }}"
                     @click="mobileOpen = false"
-                    class="w-full py-2.5 px-4 text-center text-sm font-semibold text-[#15803D] bg-green-50 border border-green-200 rounded-xl"
+                    class="w-full min-h-[44px] flex items-center justify-center py-2.5 px-4 text-center text-sm font-semibold text-[#15803D] bg-green-50 active:bg-green-100 border border-green-200 rounded-xl"
                 >
                     Join Us / Volunteer
                 </a>
                 <button 
                     type="button" 
                     @click="mobileOpen = false; $store.ngoApp.openDonate(1000)"
-                    class="w-full py-2.5 px-4 text-center text-sm font-bold text-white bg-[#15803D] hover:bg-[#166534] rounded-xl shadow-sm"
+                    class="w-full min-h-[44px] flex items-center justify-center py-2.5 px-4 text-center text-sm font-bold text-white bg-[#15803D] active:bg-[#166534] rounded-xl shadow-sm cursor-pointer"
                 >
                     Donate to Foundation
                 </button>

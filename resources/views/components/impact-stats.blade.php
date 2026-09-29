@@ -11,13 +11,13 @@
             </h2>
         </div>
 
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             @foreach($impact_stats as $idx => $stat)
-                <div class="bg-[#F8FAF8] rounded-2xl p-6 border border-[#E5EAE6] hover:border-green-300 hover:shadow-md transition-all duration-300 group flex flex-col items-center text-center reveal" data-reveal style="transition-delay: {{ $idx * 100 }}ms;">
+                <div class="bg-[#F8FAF8] rounded-2xl p-5 sm:p-6 border border-[#E5EAE6] hover:border-green-300 hover:shadow-md transition-all duration-300 group flex flex-col items-center text-center reveal" data-reveal style="transition-delay: {{ $idx * 100 }}ms;">
                     <div class="w-12 h-12 rounded-xl bg-white shadow-xs border border-[#E5EAE6] flex items-center justify-center text-[#15803D] group-hover:bg-[#15803D] group-hover:text-white transition-colors mb-4">
                         <i data-lucide="{{ $stat['icon'] }}" class="w-6 h-6"></i>
                     </div>
-                    <div class="text-3xl sm:text-4xl font-extrabold text-[#17201B] font-heading tracking-tight mb-1 group-hover:text-[#15803D] transition-colors" data-counter="{{ $stat['value'] }}">
+                    <div class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#17201B] font-heading tracking-tight mb-1 group-hover:text-[#15803D] transition-colors" data-counter="{{ $stat['value'] }}">
                         {{ $stat['value'] }}
                     </div>
                     <div class="text-sm font-bold text-[#17201B] mb-1">

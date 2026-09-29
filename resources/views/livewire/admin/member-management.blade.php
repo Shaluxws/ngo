@@ -146,7 +146,7 @@
     <!-- Members Table -->
     <div class="bg-white rounded-2xl border border-slate-200/80 shadow-2xs overflow-hidden">
         <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs text-slate-700">
+            <table class="w-full text-left text-xs text-slate-700 min-w-[640px]">
                 <thead class="bg-slate-50/75 border-b border-slate-200/80 text-[11px] uppercase tracking-wider text-slate-500 font-semibold">
                     <tr>
                         <th class="py-3 px-4">Member</th>
@@ -352,7 +352,7 @@
                                 @endif
                             </div>
                             <div class="space-y-1.5 flex-1">
-                                <div class="flex items-center gap-2">
+                                <div class="flex flex-wrap items-center gap-2">
                                     <label class="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 shadow-2xs">
                                         <i data-lucide="upload" class="w-3.5 h-3.5 text-slate-500"></i>
                                         <span>Upload Device Image</span>

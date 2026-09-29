@@ -403,18 +403,18 @@
     style="display: none;"
     @keydown.escape.window="$store.ngoApp.closeLightbox()"
 >
-    <div class="relative max-w-4xl w-full" @click.outside="$store.ngoApp.closeLightbox()">
+    <div class="relative max-w-4xl w-full flex flex-col items-center" @click.outside="$store.ngoApp.closeLightbox()">
         <button 
             type="button" 
             @click="$store.ngoApp.closeLightbox()"
-            class="absolute -top-12 right-0 text-white hover:text-amber-300 p-2"
-            aria-label="Close"
+            class="self-end sm:absolute sm:-top-12 sm:right-0 mb-2 sm:mb-0 text-white hover:text-amber-300 p-2 min-w-[44px] min-h-[44px] flex items-center justify-center cursor-pointer"
+            aria-label="Close image preview"
         >
-            <i data-lucide="x" class="w-7 h-7"></i>
+            <i data-lucide="x" class="w-6 h-6 sm:w-7 sm:h-7"></i>
         </button>
-        <div class="overflow-hidden rounded-2xl bg-black max-h-[80vh] flex items-center justify-center">
-            <img :src="$store.ngoApp.lightboxImage" :alt="$store.ngoApp.lightboxTitle" class="max-h-[80vh] w-auto object-contain rounded-xl">
+        <div class="overflow-hidden rounded-2xl bg-black max-h-[75vh] sm:max-h-[80vh] flex items-center justify-center w-full">
+            <img :src="$store.ngoApp.lightboxImage" :alt="$store.ngoApp.lightboxTitle" class="max-h-[75vh] sm:max-h-[80vh] w-auto max-w-full object-contain rounded-xl">
         </div>
-        <div class="mt-3 text-center text-white font-medium text-sm" x-text="$store.ngoApp.lightboxTitle"></div>
+        <div class="mt-3 text-center text-white font-medium text-xs sm:text-sm px-4" x-text="$store.ngoApp.lightboxTitle"></div>
     </div>
 </div>

@@ -134,7 +134,7 @@
                 </div>
             @else
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left text-xs">
+                    <table class="w-full text-left text-xs min-w-[480px]">
                         <thead>
                             <tr class="text-slate-400 border-b border-slate-100">
                                 <th class="pb-2.5 font-semibold">User</th>

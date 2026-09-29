@@ -23,8 +23,8 @@
                 <div class="lg:col-span-6 relative">
                     <div class="overflow-hidden rounded-2xl border-4 border-white shadow-lg aspect-16/10 sm:aspect-4/3 bg-slate-100">
                         <img 
-                            src="{{ $campaign['image'] }}" 
-                            alt="{{ $campaign['image_alt'] }}" 
+                            src="{{ $campaign['image'] ?? 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80' }}" 
+                            alt="{{ $campaign['image_alt'] ?? 'Community Education Project' }}" 
                             class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                             loading="lazy"
                         >
@@ -38,7 +38,7 @@
 
                     <div class="absolute bottom-4 right-4 bg-slate-900/90 backdrop-blur-md px-3.5 py-1.5 rounded-lg text-xs font-semibold text-white shadow-md flex items-center gap-1.5">
                         <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-400"></i>
-                        <span>{{ $campaign['days_left'] }} Days Remaining</span>
+                        <span>{{ $campaign['days_left'] ?? 18 }} Days Remaining</span>
                     </div>
                 </div>
 
@@ -50,10 +50,10 @@
                             Tamil Nadu Rural Education Project
                         </span>
                         <h3 class="text-xl sm:text-2xl font-bold text-[#17201B] font-heading mt-1 leading-snug">
-                            {{ $campaign['title'] }}
+                            {{ $campaign['title'] ?? 'Digital Classrooms & Science Labs for Rural Schools' }}
                         </h3>
                         <p class="text-sm text-[#647067] mt-3 leading-relaxed">
-                            {{ $campaign['subtitle'] }}
+                            {{ $campaign['subtitle'] ?? 'Empowering underprivileged government school students with digital smart classrooms and learning resources.' }}
                         </p>
                     </div>
 
@@ -62,14 +62,14 @@
                         <div class="flex items-baseline justify-between">
                             <div>
                                 <span class="text-2xl sm:text-3xl font-extrabold text-[#15803D] font-heading">
-                                    ₹{{ number_format($campaign['raised']) }}
+                                    ₹{{ number_format($campaign['raised'] ?? 725000) }}
                                 </span>
                                 <span class="text-xs text-[#647067] font-medium ml-1">
-                                    raised of ₹{{ number_format($campaign['goal']) }} goal
+                                    raised of ₹{{ number_format($campaign['goal'] ?? 1000000) }} goal
                                 </span>
                             </div>
                             <span class="text-sm font-extrabold text-[#15803D] bg-[#DCFCE7] px-2.5 py-1 rounded-full">
-                                {{ $campaign['progress_percentage'] }}%
+                                {{ $campaign['progress_percentage'] ?? 72 }}%
                             </span>
                         </div>
 
@@ -77,14 +77,14 @@
                         <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
                             <div 
                                 class="h-full bg-gradient-to-r from-[#15803D] to-[#0F766E] rounded-full transition-all duration-1000"
-                                style="width: {{ $campaign['progress_percentage'] }}%"
+                                style="width: {{ $campaign['progress_percentage'] ?? 72 }}%"
                             ></div>
                         </div>
 
                         <div class="flex items-center justify-between text-xs text-[#647067] pt-1">
                             <span class="flex items-center gap-1">
                                 <i data-lucide="users" class="w-3.5 h-3.5 text-slate-500"></i>
-                                <strong class="text-[#17201B]">{{ $campaign['supporters'] }}</strong> generous supporters
+                                <strong class="text-[#17201B]">{{ $campaign['supporters'] ?? 348 }}</strong> generous supporters
                             </span>
                             <span class="text-[11px] text-green-700 font-semibold">
                                 80G Tax Deductible
@@ -94,7 +94,7 @@
 
                     <!-- Impact Key Highlights -->
                     <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#17201B]">
-                        @foreach($campaign['impact_bullets'] as $bullet)
+                        @foreach($campaign['impact_bullets'] ?? ['12 Village Schools Equipped', '2,400+ Students Benefited', 'STEM Learning Toolkits', 'Quarterly Teacher Trainings'] as $bullet)
                             <li class="flex items-start gap-2">
                                 <i data-lucide="check-circle" class="w-4 h-4 text-[#15803D] shrink-0 mt-0.5"></i>
                                 <span>{{ $bullet }}</span>
@@ -106,7 +106,7 @@
                     <div class="pt-2 space-y-3">
                         <div class="flex flex-wrap gap-2 items-center">
                             <span class="text-xs font-semibold text-[#647067]">Quick Amount:</span>
-                            @foreach($campaign['suggested_amounts'] as $amount)
+                            @foreach($campaign['suggested_amounts'] ?? [500, 1000, 2500, 5000] as $amount)
                                 <button 
                                     type="button" 
                                     @click="$store.ngoApp.openDonate({{ $amount }})"

@@ -19,6 +19,7 @@
     @livewireStyles
 </head>
 <body class="h-full font-sans text-slate-800 antialiased selection:bg-emerald-600 selection:text-white"
+      @keydown.escape.window="sidebarOpen = false"
       x-data="{ 
           sidebarOpen: false, 
           profileMenuOpen: false,
@@ -83,7 +84,7 @@
                         <span class="block text-[10px] text-emerald-400 font-medium">Admin Management</span>
                     </div>
                 </div>
-                <button type="button" @click="sidebarOpen = false" class="text-slate-400 hover:text-white p-1">
+                <button type="button" @click="sidebarOpen = false" aria-label="Close sidebar" class="min-w-[44px] min-h-[44px] flex items-center justify-center text-slate-400 hover:text-white rounded-xl active:bg-slate-800">
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
@@ -143,7 +144,7 @@
                 
                 <header class="h-16 bg-white border-b border-slate-200/80 px-4 sm:px-6 lg:px-8 flex items-center justify-between sticky top-0 z-30 shadow-xs">
                     <div class="flex items-center gap-3">
-                        <button type="button" @click="sidebarOpen = true" class="lg:hidden p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+                        <button type="button" @click="sidebarOpen = true" aria-label="Open sidebar menu" class="lg:hidden min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 active:bg-slate-200">
                             <i data-lucide="menu" class="w-5 h-5"></i>
                         </button>
                         

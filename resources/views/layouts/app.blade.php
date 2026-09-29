@@ -46,27 +46,27 @@
         @endphp
         <div class="text-xs py-2 px-4 border-b border-black/10 transition-colors" style="background-color: {{ $topBarBg }}; color: {{ $topBarText }};">
             <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
-                <div class="flex items-center gap-2 justify-center">
+                <div class="flex flex-wrap items-center gap-2 justify-center sm:justify-start">
                     @if (!empty($ngo['top_bar_badge']))
-                        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-semibold text-slate-950 shadow-2xs" style="background-color: {{ $topBarBadge }};">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold text-slate-950 shadow-2xs shrink-0" style="background-color: {{ $topBarBadge }};">
                             <i data-lucide="sparkles" class="w-3 h-3" aria-hidden="true"></i> <span>{{ $ngo['top_bar_badge'] }}</span>
                         </span>
                     @endif
                     @if (!empty($ngo['top_bar_text']))
-                        <span class="opacity-95 hidden md:inline">{{ $ngo['top_bar_text'] }}</span>
+                        <span class="opacity-95 text-[11px] sm:text-xs">{{ $ngo['top_bar_text'] }}</span>
                     @endif
                 </div>
-                <div class="flex items-center gap-4 text-xs justify-center opacity-95">
+                <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs justify-center sm:justify-end opacity-95">
                     @if (($ngo['phone_enabled'] ?? true) && !empty($ngo['phone']))
                         <a href="tel:{{ preg_replace('/[^\+\d]/', '', $ngo['phone']) }}" aria-label="Call {{ $ngo['phone'] }}" class="hover:opacity-100 hover:underline transition-all inline-flex items-center gap-1" style="color: {{ $topBarText }};">
                             <i data-lucide="phone" class="w-3.5 h-3.5" aria-hidden="true"></i> <span>{{ $ngo['phone'] }}</span>
                         </a>
                     @endif
                     @if (($ngo['phone_enabled'] ?? true) && !empty($ngo['phone']) && ($ngo['email_enabled'] ?? true) && !empty($ngo['email']))
-                        <span class="opacity-40 hidden sm:inline" aria-hidden="true">•</span>
+                        <span class="opacity-40 hidden md:inline" aria-hidden="true">•</span>
                     @endif
                     @if (($ngo['email_enabled'] ?? true) && !empty($ngo['email']))
-                        <a href="mailto:{{ $ngo['email'] }}" aria-label="Email {{ $ngo['email'] }}" class="hover:opacity-100 hover:underline transition-all hidden sm:inline-flex items-center gap-1" style="color: {{ $topBarText }};">
+                        <a href="mailto:{{ $ngo['email'] }}" aria-label="Email {{ $ngo['email'] }}" class="hover:opacity-100 hover:underline transition-all hidden md:inline-flex items-center gap-1" style="color: {{ $topBarText }};">
                             <i data-lucide="mail" class="w-3.5 h-3.5" aria-hidden="true"></i> <span>{{ $ngo['email'] }}</span>
                         </a>
                     @endif
@@ -74,7 +74,7 @@
                         <span class="opacity-40 hidden sm:inline" aria-hidden="true">•</span>
                     @endif
                     <a href="{{ route('admin.dashboard') }}" aria-label="Open Admin Dashboard" class="hover:opacity-100 font-semibold inline-flex items-center gap-1 transition-all" style="color: {{ $topBarLink }};">
-                        <i data-lucide="layout-dashboard" class="w-3.5 h-3.5" aria-hidden="true"></i> <span>Admin Dashboard</span>
+                        <i data-lucide="layout-dashboard" class="w-3.5 h-3.5" aria-hidden="true"></i> <span>Admin</span>
                     </a>
                 </div>
             </div>
